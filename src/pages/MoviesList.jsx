@@ -21,8 +21,13 @@ export default function MoviesList() {
 
     return (
         <>
+            {moviesList.length ? moviesList.map((movie) => (
+                <div key={movie.id}>
+                    <MovieCard movie={movie} />
+                </div>
 
-            <MovieCard />
+            )) : <div>movies not found</div>}
+
 
         </>
     )
