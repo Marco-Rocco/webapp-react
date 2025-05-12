@@ -6,12 +6,12 @@ function MovieCard({ movie }) {
     return (
         <>
             <div className="card">
-                <img src={movie.image} className="card-img-top" alt={movie.title} />
+                <img src={imagepath} className="w-50 mx-auto" alt={title} />
                 <div className="card-body">
-                    <h3 className="card-title">{movie.title}</h3>
-                    <h5 className="card-title">{movie.director}</h5>
-                    <p className="card-text">{movie.abstract}</p>
-                    <Link to={`/movies/${id}`} className="btn btn-primary mt-4">Scheda film</Link>
+                    <h3 className="card-title">{title}</h3>
+                    <h5 className="card-title">{director}</h5>
+                    <p className="card-text">{abstract}</p>
+                    <Link to={`/movies/${id}`} className="btn btn-primary mt-4">movie details</Link>
                 </div>
             </div>
         </>
