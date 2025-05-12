@@ -1,16 +1,11 @@
-export default function MovieCard({ movie }) {
-    const { title, director, image, abstract } = movie;
-
+const MovieCard = () => {
     return (
         <>
-            <div className="card">
-                <img src={image} alt={title} />
-                <div>
-                    <h5>{title}</h5>
-                    <p>Director: <strong>{director}</strong></p>
-                    <p>{abstract}</p>
-                </div>
-            </div>
+            <div>titolo</div>
+            <div>direttore</div>
         </>
+
     )
-};
+}
+
+export default MovieCard
