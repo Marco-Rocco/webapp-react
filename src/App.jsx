@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import DefaultLayout from './layouts/DefaultLayout'
-import MoviesList from './pages/MoviesDetails'
+import MoviesList from './pages/MoviesList'
 
 function App() {
 
