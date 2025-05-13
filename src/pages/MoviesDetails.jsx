@@ -21,12 +21,12 @@ export default function MoviesDetails() {
     useEffect(getMovie, [id])
 
     function getReviews() {
-        if (!movies.reviews || movies.reviews.length === 0) {
+        if (!movie.reviews || movie.reviews.length === 0) {
             return <p>Nessuna recensione disponibile.</p>;
         }
 
-        return movies.reviews.map(review => (
-            <ReviewCard key={id} data={review} />
+        return movie.reviews.map(review => (
+            <ReviewCard key={review.id} data={review} />
         ));
     }
 
@@ -49,12 +49,7 @@ export default function MoviesDetails() {
                     </div>
                 </div>
 
-                {getReviews.length ? getReviews.map((review) => (
-                    <div key={review.id}>
-                        <ReviewCard review={review} />
-                    </div>
-
-                )) : <div>reviews not found</div>}
+                <div>{getReviews()}</div>
 
             </div>
         </>

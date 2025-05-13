@@ -1,5 +1,5 @@
 export default function ReviewCard({ review }) {
-    const { id, name, text, vote } = review;
+    const { name, text, vote } = review;
 
     return (
         <>
