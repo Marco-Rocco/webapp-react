@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ReviewCard from "../components/ReviewCard";
 
 
 
@@ -18,7 +19,16 @@ export default function MoviesDetails() {
     }
 
     useEffect(getMovie, [id])
-    console.log(movie.reviews)
+
+    function getReviews() {
+        if (!movies.reviews || movies.reviews.length === 0) {
+            return <p>Nessuna recensione disponibile.</p>;
+        }
+
+        return movies.reviews.map(review => (
+            <ReviewCard key={id} data={review} />
+        ));
+    }
 
 
     return (
@@ -38,6 +48,8 @@ export default function MoviesDetails() {
                         </div>
                     </div>
                 </div>
+
+                {/* <div>{getReviews()}</div> */}
 
             </div>
         </>
