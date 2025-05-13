@@ -5,6 +5,8 @@ import MovieCard from "../components/MovieCard";
 export default function MoviesList() {
 
     const [moviesList, setMoviesList] = useState([])
+    const [find, setFind] = useState('');
+
     const endpoint = 'http://127.0.0.1:1500/movies'
 
     function getMovies() {
@@ -17,10 +19,23 @@ export default function MoviesList() {
             .catch(err => console.log(err))
     };
 
+
+    function findMovies(event) {
+        event.preventDefault();
+        getMovies();
+    }
+
     useEffect(getMovies, [])
+
+
 
     return (
         <>
+
+            <form onSubmit={findMovies} className="row g-1">
+
+            </form>
+
             {moviesList.length ? moviesList.map((movie) => (
                 <div key={movie.id}>
                     <MovieCard movie={movie} />

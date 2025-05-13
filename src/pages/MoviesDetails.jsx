@@ -1,7 +1,46 @@
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+
+
 export default function MoviesDetails() {
+
+    const { id } = useParams();
+    const [movie, setMovie] = useState({})
+
+    const endpoint = `http://127.0.0.1:1500/movies/${id}`
+
+    function getMovie() {
+        axios(endpoint)
+            .then(res => setMovie(res.data))
+            .catch(err => console.log(err))
+    }
+
+    useEffect(getMovie, [id])
+    console.log(movie.reviews)
+
+
     return (
         <>
-            <div>movies details</div>
+            <div>
+                <div className="card mb-3">
+                    <div className="row g-0">
+                        <div className="col-2">
+                            <img src={movie.imagepath} className="img-fluid rounded-start" alt={movie.title} />
+                        </div>
+                        <div className="col-10">
+                            <div className="card-body">
+                                <h5 className="card-title">{movie.title}</h5>
+                                <p className="card-text">{movie.director}</p>
+                                <p className="card-text"><small className="text-body-secondary">{movie.abstract}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </>
     )
 }
+
