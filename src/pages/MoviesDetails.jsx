@@ -49,7 +49,12 @@ export default function MoviesDetails() {
                     </div>
                 </div>
 
-                {/* <div>{getReviews()}</div> */}
+                {getReviews.length ? getReviews.map((review) => (
+                    <div key={review.id}>
+                        <ReviewCard review={review} />
+                    </div>
+
+                )) : <div>reviews not found</div>}
 
             </div>
         </>
