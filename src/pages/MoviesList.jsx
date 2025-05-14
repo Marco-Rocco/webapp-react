@@ -10,13 +10,16 @@ export default function MoviesList() {
     const endpoint = 'http://127.0.0.1:1500/movies'
 
     function getMovies() {
-        axios.get(endpoint)
-            .then(res => {
-                console.log(res.data)
-                setMoviesList(res.data);
-                console.log(res.data)
+        axios.get(endpoint, {
+            params: {
+                find
+            }
+        })
+            .then(response => {
+                console.log(response.data);
+                setMoviesList(response.data);
             })
-            .catch(err => console.log(err))
+            .catch(error => console.log(error))
     };
 
 
@@ -33,7 +36,8 @@ export default function MoviesList() {
         <>
 
             <form onSubmit={findMovies} className="row g-1">
-
+                <input type="text" className="form-control" placeholder="search movie" value={find} onChange={(event) => setFind(event.target.value)} />
+                <button type="submit" className="btn- btn-primary mb-3">go!</button>
             </form>
 
             {moviesList.length ? moviesList.map((movie) => (
