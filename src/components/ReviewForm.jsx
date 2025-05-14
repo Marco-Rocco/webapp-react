@@ -27,7 +27,8 @@ export default function ReviewForm() {
     function sendForm(event) {
         event.preventDefault();
 
-        axios.post(endpoint, formData)
+        axios.post(endpoint,
+            { ...formData, vote: parseInt(formData.vote) })
             .then(response => console.log(response.data))
             .catch(err => console.log(err));
 
@@ -48,7 +49,7 @@ export default function ReviewForm() {
                             <input type="text" name="name" value={formData.name} onChange={changeForm} className="form-control" />
                         </div>
 
-                        <select className="form-select mb-3" onChange={changeForm} >
+                        <select className="form-select mb-3" name="vote" onChange={changeForm} >
                             <option value={formData.vote}  >select your vote!</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
