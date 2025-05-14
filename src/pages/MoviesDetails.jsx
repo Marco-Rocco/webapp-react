@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReviewCard from "../components/ReviewCard";
+import ReviewForm from "../components/ReviewForm";
 
 
 
@@ -50,6 +51,12 @@ export default function MoviesDetails() {
                 </div>
 
                 <div>{getReviews()}</div>
+
+
+                {/* form aggiunta review */}
+                <div>{ReviewForm()}</div>
+
+
 
             </div>
         </>
