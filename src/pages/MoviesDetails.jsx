@@ -54,7 +54,7 @@ export default function MoviesDetails() {
 
 
                 {/* form aggiunta review */}
-                <div>{ReviewForm()}</div>
+                <div><ReviewForm /></div>
 
 
 

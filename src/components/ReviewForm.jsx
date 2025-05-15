@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react"
-import { useParams, useRouteLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function ReviewForm() {
 
@@ -29,7 +29,10 @@ export default function ReviewForm() {
 
         axios.post(endpoint,
             { ...formData, vote: parseInt(formData.vote) })
-            .then(response => console.log(response.data))
+            .then(response => {
+                console.log(response.data)
+                window.location.reload();
+            })
             .catch(err => console.log(err));
 
         setFormData(initialValues);
