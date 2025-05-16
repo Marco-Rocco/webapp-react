@@ -19,6 +19,7 @@ export default function MoviesDetails() {
     const endpoint = `http://127.0.0.1:1500/movies/${id}`
 
     function getMovie() {
+        setIsLoading(true)
         axios(endpoint)
             .then(res => setMovie(res.data))
             .catch(err => console.log(err))
