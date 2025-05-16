@@ -5,11 +5,16 @@ import ReviewCard from "../components/ReviewCard";
 import ReviewForm from "../components/ReviewForm";
 
 
+import { useContext } from "react";
+import GlobalContext from "../contexts/globalContext";
+
 
 export default function MoviesDetails() {
 
     const { id } = useParams();
     const [movie, setMovie] = useState({})
+
+    const { setIsLoading } = useContext(GlobalContext)
 
     const endpoint = `http://127.0.0.1:1500/movies/${id}`
 
@@ -17,6 +22,7 @@ export default function MoviesDetails() {
         axios(endpoint)
             .then(res => setMovie(res.data))
             .catch(err => console.log(err))
+            .finally(() => setIsLoading(false))
     }
 
     useEffect(getMovie, [id])

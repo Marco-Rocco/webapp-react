@@ -3,14 +3,23 @@ import axios from "axios";
 import MovieCard from "../components/MovieCard";
 import MovieForm from "../components/MovieForm";
 
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import GlobalContext from "../contexts/globalContext";
+
 export default function MoviesList() {
 
     const [moviesList, setMoviesList] = useState([])
     const [find, setFind] = useState('');
 
+    const { setIsLoading } = useContext(GlobalContext)
+
     const endpoint = 'http://127.0.0.1:1500/movies'
 
     function getMovies() {
+
+        setIsLoading(true);
+
         axios.get(endpoint, {
             params: {
                 find
@@ -21,6 +30,7 @@ export default function MoviesList() {
                 setMoviesList(response.data);
             })
             .catch(error => console.log(error))
+            .finally(() => setIsLoading(false))
     };
 
 
