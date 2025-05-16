@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MovieCard from "../components/MovieCard";
+import MovieForm from "../components/MovieForm";
 
 export default function MoviesList() {
 
@@ -47,7 +48,7 @@ export default function MoviesList() {
 
             )) : <div>movies not found</div>}
 
-
+            <div><MovieForm /> </div>
         </>
     )
 }
